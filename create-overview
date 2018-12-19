@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+image=$1
+overview="$1.ovr"
+if [ \! -f "$overview" ]; then
+  gdaladdo -clean -r lanczos -ro --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR --config INTERLEAVE_OVERVIEW PIXEL "$image" 2 4 8 16 32 64 128 256
+fi
